@@ -1,13 +1,15 @@
-def divide_matrix(numbers, size):
-    result = list()
+# Given a square matrix and a size such that size evenly divides len(matrix),
+# divides the matrix into submatrices of size x size.
+def divide_matrix(matrix, size):
+    submatrices = list()
 
-    for i in range(0, len(numbers), size):
-        rows = numbers[i:i + size]
-        for j in range(0, len(numbers), size):
+    for i in range(0, len(matrix), size):
+        rows = matrix[i:i + size]
+        for j in range(0, len(matrix), size):
             submatrix = [r[j:j + size] for r in rows]
-            result.append(submatrix)
+            submatrices.append(submatrix)
 
-    return result
+    return submatrices
 
 
 matrix = [[0,  1,  2,  3],
@@ -30,4 +32,3 @@ assert divide_matrix(matrix, 3) == [[[0,  1,  2],  [6,  7,  8],  [12, 13, 14]],
                                     [[3,  4,  5],  [9,  10, 11], [15, 16, 17]],
                                     [[18, 19, 20], [24, 25, 26], [30, 31, 32]],
                                     [[21, 22, 23], [27, 28, 29], [33, 34, 35]]]
-
